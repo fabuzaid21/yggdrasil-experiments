@@ -1,2 +1,4 @@
 *.sh
 *.pem
+tsvs/
+mllib_perf_output*
