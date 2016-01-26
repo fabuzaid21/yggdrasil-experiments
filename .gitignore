@@ -1,4 +1,6 @@
+*.swp
 *.sh
 *.pem
+*.eps
 tsvs/
 mllib_perf_output*
