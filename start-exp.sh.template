@@ -9,7 +9,7 @@ CLUSTER_NAME=
 . aws_config.sh
 
 $SPARK_HOME/ec2/spark-ec2 -k $AWS_KEY_PAIR -i $AWS_IDENTITY_FILE \
-  --region=us-east-1 --zone=us-east-1b --instance-type=$INSTANCE_TYPE -s $NUM_WORKERS \
+  --region=us-east-1 --zone=us-east-1b --spot-price 0.6 --instance-type=$INSTANCE_TYPE -s $NUM_WORKERS \
   --spark-ec2-git-repo=https://github.com/fabuzaid21/spark-ec2 --spark-ec2-git-branch=branch-1.5 \
   --spark-git-repo=$SPARK_GIT_REPO --spark-version=$YGGDRASIL_COMMIT_HASH --hadoop-major-version=yarn \
   --resume launch $CLUSTER_NAME

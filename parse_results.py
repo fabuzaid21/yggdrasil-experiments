@@ -10,7 +10,8 @@ TRAIN_METRIC_REGEX = r'Training Set Metric: (\d+\.\d+)'
 TEST_METRIC_REGEX = r'Test Set Metric: (\d+\.\d+)'
 
 DELIMITER='\t'
-HEADER_VALS = ['Rows', 'Columns', 'Train Data', 'Test Data', 'Depth', 'Max Bins', 'Algo', 'Label', 'Training Time (s)', 'Training Metric', 'Test Metric']
+HEADER_VALS = ['Num. Instances', 'Num. Features', 'Train Data', 'Test Data',
+'Tree Depth', 'Max Bins', 'Algo', 'Label', 'Training Time (s)', 'Training Metric', 'Test Metric']
 TSV_HEADER = DELIMITER.join(HEADER_VALS) + '\n'
 TSV_DIR = 'tsvs/'
 
@@ -55,10 +56,12 @@ def main(argv):
                     train_data = '   N/A   '
                 else:
                     train_data = re.sub(r'^hdfs.*9000\/', '', train_data)
+                    train_data = re.sub(r'^file.*data\/', '', train_data)
                 if test_data == '':
                     test_data = '   N/A   '
                 else:
                     test_data = re.sub(r'^hdfs.*9000\/', '', test_data)
+                    test_data = re.sub(r'^file.*data\/', '', test_data)
 
                 result_line = [num_examples, num_features, train_data,\
                                test_data, tree_depth, max_bins, alg_type,\
