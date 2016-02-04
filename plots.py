@@ -7,9 +7,9 @@ import glob
 DEBUG = False
 
 DIRS = {
-        'by-feature': [(1, 7, 'By Feature')],
+        'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
         'mnist-8m': [(4, 7, 'MNIST 8M')],
-        'internet-web-company': [(4, 7, 'Large-Scale Web Company')],
+        'internet-web-company': [(4, 7, 'Leading Web Company')],
         'friedman-1': [(4, 8, 'Friedman 1 Generator: Train RMSE'),
                        (4, 9, 'Friedman 1 Generator: Test RMSE')],
         'year-prediction-msd': [(4, 8, 'YearPredictionMSD Train RMSE'),
@@ -20,7 +20,20 @@ FILE_PATTERNS = {
                  'byCol*.tsv': '.',
                 }
 
+LABELS = {
+    'tsvs/mnist-8m/byRow.tsv': 'PLANET',
+    'tsvs/mnist-8m/byCol.tsv': 'Yggdrasil',
+    'tsvs/internet-web-company/byRow.tsv': 'PLANET',
+    'tsvs/internet-web-company/byCol.tsv': 'Yggdrasil',
+    'tsvs/by-feature/byRow15.tsv': 'PLANET, D = 15',
+    'tsvs/by-feature/byRow5.tsv': 'PLANET, D = 5',
+    'tsvs/by-feature/byCol15.tsv': 'Yggdrasil, D = 15',
+    'tsvs/by-feature/byCol5.tsv': 'Yggdrasil, D = 5',
+         }
+
 plt.rc('text', usetex = True)
+plt.rc('font',**{'family':'serif','serif':['Computer Modern Roman']})
+plt.rcParams.update({'font.size': 18})
 
 for dir, plot_infos in DIRS.items():
     if DEBUG: print dir
@@ -51,10 +64,12 @@ for dir, plot_infos in DIRS.items():
                         # vals[6], float(vals[7]), float(vals[8]), float(vals[9])
                         xs.append(x_val)
                         ys.append(y_val)
-                    plt.plot(xs, ys, marker + '-', label = full_path[len('tsvs/' + dir + '/'):-4])
+
+                    plt.plot(xs, ys, marker + '-', markersize=10, label = LABELS[full_path] if full_path in LABELS
+                                                        else full_path[len('tsvs/' + dir + '/'):-4])
                     plt.xlabel(x_label)
                     plt.ylabel(y_label)
-        plt.legend(loc='best', ncol=2)
+        plt.legend(loc='upper left', fontsize='17')
         plt.title(title)
         plt.grid(True)
         filename = re.sub(r'(:|\s+)', '_', title)
