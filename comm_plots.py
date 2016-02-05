@@ -27,9 +27,9 @@ planet_2k, = plt.plot(x_axis, np.cumsum(by_row_2000), 'x-', markersize=10, label
 planet_4k, = plt.plot(x_axis, np.cumsum(by_row_4000), 'x-', markersize=10, label = 'PLANET, p = 4K')
 
 first_legend = plt.legend(handles=[planet_1k, planet_2k, planet_4k], loc='upper left',
-                          borderaxespad=0.2, fontsize='16')
+                          fontsize='15')
 ax = plt.gca().add_artist(first_legend)
-plt.legend(handles=[ygg], loc='lower right', borderaxespad=0.2, fontsize='16')
+plt.legend(handles=[ygg], loc='lower right', fontsize='15')
 plt.ylabel('Number of Bytes Sent, Log Scale')
 plt.xlabel('Tree Depth')
 plt.title('Yggdrasil vs. PLANET: Communication Cost')

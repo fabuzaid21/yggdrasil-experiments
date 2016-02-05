@@ -7,13 +7,13 @@ import glob
 DEBUG = False
 
 DIRS = {
-        'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
+        #'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
         'mnist-8m': [(4, 7, 'MNIST 8M')],
-        'internet-web-company': [(4, 7, 'Leading Web Company')],
-        'friedman-1': [(4, 8, 'Friedman 1 Generator: Train RMSE'),
-                       (4, 9, 'Friedman 1 Generator: Test RMSE')],
-        'year-prediction-msd': [(4, 8, 'YearPredictionMSD Train RMSE'),
-                                (4, 9, 'YearPredictionMSD Test RMSE')],
+        #'internet-web-company': [(4, 7, 'Leading Web Company')],
+        #'friedman-1': [(4, 8, 'Friedman 1 Generator: Train RMSE'),
+                       #(4, 9, 'Friedman 1 Generator: Test RMSE')],
+        #'year-prediction-msd': [(4, 8, 'YearPredictionMSD Train RMSE'),
+                                #(4, 9, 'YearPredictionMSD Test RMSE')],
         }
 FILE_PATTERNS = {
                  'byRow*.tsv': 'x',
@@ -69,6 +69,8 @@ for dir, plot_infos in DIRS.items():
                                                         else full_path[len('tsvs/' + dir + '/'):-4])
                     plt.xlabel(x_label)
                     plt.ylabel(y_label)
+        if dir == 'mnist-8m':
+            plt.ylim([0, 2500])
         plt.legend(loc='upper left', fontsize='17')
         plt.title(title)
         plt.grid(True)
