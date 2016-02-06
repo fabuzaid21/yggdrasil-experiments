@@ -25,10 +25,10 @@ p_s = [1, 2, 4, 6, 8]
 # p = 8 [0.708559, 0.800981, 0.861226]
 
 
-plt.plot(p_s, [acc_1, acc_2, acc_4, acc_6, acc_8], '.-', markersize=10, label=r'B = $\infty$')
-plt.plot(p_s, [0.8841, 0.839270, 0.780442, 0.736405, 0.708559], 'x-', markersize=10, label='B = 2')
-plt.plot(p_s, [0.938786, 0.914204, 0.873920, 0.823908, 0.800981], 'x-', markersize=10, label='B = 4')
-plt.plot(p_s, [0.968106, 0.945766, 0.917531, 0.882080, 0.861226], 'x-', markersize=10, label='B = 8')
+plt.plot(p_s, [acc_1, acc_2, acc_4, acc_6, acc_8], '.-', markersize=10, label='Yggdrasil')
+plt.plot(p_s, [0.8841, 0.839270, 0.780442, 0.736405, 0.708559], 'x-', markersize=10, label='PLANET, B = 2')
+plt.plot(p_s, [0.938786, 0.914204, 0.873920, 0.823908, 0.800981], 'x-', markersize=10, label='PLANET, B = 4')
+plt.plot(p_s, [0.968106, 0.945766, 0.917531, 0.882080, 0.861226], 'x-', markersize=10, label='PLANET, B = 8')
 
 plt.legend(loc='lower left', fontsize='15')
 plt.ylabel('Training Accuracy')

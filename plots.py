@@ -8,8 +8,8 @@ DEBUG = False
 
 DIRS = {
         #'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
-        'mnist-8m': [(4, 7, 'MNIST 8M')],
-        #'internet-web-company': [(4, 7, 'Leading Web Company')],
+        'mnist-8m': [(4, 7, 'Yggdrasil vs. PLANET: MNIST 8M')],
+        'internet-web-company': [(4, 7, 'Yggdrasil vs. PLANET: Leading Web Company')],
         #'friedman-1': [(4, 8, 'Friedman 1 Generator: Train RMSE'),
                        #(4, 9, 'Friedman 1 Generator: Test RMSE')],
         #'year-prediction-msd': [(4, 8, 'YearPredictionMSD Train RMSE'),
