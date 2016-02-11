@@ -34,6 +34,14 @@ LABELS = {
 plt.rc('text', usetex = True)
 plt.rc('font',**{'family':'serif','serif':['Computer Modern Roman']})
 plt.rcParams.update({'font.size': 18})
+# TODO:
+# Get current size
+# fig_size = plt.rcParams["figure.figsize"]
+# Set figure width to 12 and height to 6 (originally, 8 & 6)
+# fig_size[0] = 12
+# fig_size[1] = 6
+# plt.rcParams["figure.figsize"] = fig_size
+
 
 for dir, plot_infos in DIRS.items():
     if DEBUG: print dir

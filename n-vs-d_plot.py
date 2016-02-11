@@ -43,6 +43,10 @@ ax.set_xscale('log')
 ax.set_xlim([n_s_args[0], n_s_args[1]])
 ax.set_xticks(np.arange(*n_s_args))
 ax.xaxis.set_major_formatter(FuncFormatter(ticks_format))
+ax.text(1.75e6, 3, 'Horizontal Partitioning Better',
+      bbox={'facecolor':'powderblue', 'alpha':0.5, 'pad':10})
+ax.text(8e5, 9, 'Vertical Partitioning Better',
+      bbox={'facecolor':'orange', 'alpha':0.5, 'pad':10})
 #ax.xaxis.set_minor_formatter(FuncFormatter(ticks_format))
 #for label in line.axes.get_xaxis().get_ticklabels()[::2]:
 #    label.set_visible(True)
@@ -52,4 +56,4 @@ ax.xaxis.set_major_formatter(FuncFormatter(ticks_format))
 plt.ylabel('Tree Depth (D)')
 plt.xlabel('Num. Instances (n), Log Scale')
 plt.grid(True)
-plt.savefig('n-vs-d.eps')
+plt.savefig('n-vs-d.eps') #TODO:, box_inches='tight', pad_inches=0)
