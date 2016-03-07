@@ -42,9 +42,9 @@ ax.set_xscale('log')
 ax.set_xlim([n_s_args[0], n_s_args[1]])
 ax.set_xticks(np.arange(*n_s_args))
 ax.xaxis.set_major_formatter(FuncFormatter(ticks_format))
-ax.text(1.75e6, 350, 'Horizontal Partitioning Better',
+ax.text(3e6, 350, 'PLANET Better',
       bbox={'facecolor':'powderblue', 'alpha':0.5, 'pad':10})
-ax.text(8e5, 2700, 'Vertical Partitioning Better',
+ax.text(1e6, 2600, 'Yggdrasil Better',
       bbox={'facecolor':'orange', 'alpha':0.5, 'pad':10})
 #ax.xaxis.set_minor_formatter(FuncFormatter(ticks_format))
 #for label in line.axes.get_xaxis().get_ticklabels()[::2]:
@@ -54,5 +54,6 @@ ax.text(8e5, 2700, 'Vertical Partitioning Better',
 #plt.legend(loc='lower left', fontsize='15')
 plt.ylabel('Num. Features (p)')
 plt.xlabel('Num. Instances (n), Log Scale')
+plt.title('Num. Instances vs. Num. Features')
 plt.grid(True)
-plt.savefig('n-vs-p.eps', box_inches='tight', pad_inches=0)
+plt.savefig('n-vs-p.svg', transparent=True, bbox_inces='tight', pad_inches=0.5)

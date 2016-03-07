@@ -30,9 +30,9 @@ plt.plot(p_s, [0.8841, 0.839270, 0.780442, 0.736405, 0.708559], 'x-', markersize
 plt.plot(p_s, [0.938786, 0.914204, 0.873920, 0.823908, 0.800981], 'x-', markersize=10, label='PLANET, B = 4')
 plt.plot(p_s, [0.968106, 0.945766, 0.917531, 0.882080, 0.861226], 'x-', markersize=10, label='PLANET, B = 8')
 
-plt.legend(loc='lower left', fontsize='15')
+plt.legend(loc='lower left', fontsize='15', fancybox=True, framealpha=0.4)
 plt.ylabel('Training Accuracy')
 plt.xlabel('Num. Features')
 plt.title('Yggdrasil vs. PLANET: Discretization Error')
 plt.grid(True)
-plt.savefig('Accuracy.eps')
+plt.savefig('accuracy.svg', transparent=True, bbox_inces='tight', pad_inches=2.5)

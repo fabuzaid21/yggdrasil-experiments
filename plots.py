@@ -7,9 +7,9 @@ import glob
 DEBUG = False
 
 DIRS = {
-#'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
+  'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
   'mnist-8m': [(4, 7, 'Yggdrasil vs. PLANET: MNIST 8M')],
-  'internet-web-company': [(4, 7, 'Yggdrasil vs. PLANET: Leading Web Company')],
+  'internet-web-company': [(4, 7, 'Yggdrasil vs. PLANET: Yahoo! Dataset')],
 #'friedman-1': [(4, 8, 'Friedman 1 Generator: Train RMSE'),
 #(4, 9, 'Friedman 1 Generator: Test RMSE')],
 #'year-prediction-msd': [(4, 8, 'YearPredictionMSD Train RMSE'),
@@ -78,9 +78,9 @@ for dir, plot_infos in DIRS.items():
                     plt.ylabel(y_label)
         if dir == 'mnist-8m':
             plt.ylim([0, 2500])
-        plt.legend(loc='upper left', fontsize='17')
+        plt.legend(loc='upper left', fontsize='17', fancybox=True, framealpha=0.4)
         plt.title(title)
         plt.grid(True)
         filename = re.sub(r'(:|\s+)', '_', title)
-        plt.savefig(filename + '.eps')
+        plt.savefig(filename + '.svg', transparent=True, bbox_inces='tight', pad_inches=2.5)
 
