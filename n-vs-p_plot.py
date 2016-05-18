@@ -5,16 +5,31 @@ from matplotlib.ticker import FuncFormatter
 import numpy as np
 from math import pow
 
-def ticks_format(value, index):
+def x_ticks_format(value, index):
     """
     Converts to labels to scientific notation: n*e^m
     To have all the number of the same size they are all returned as latex strings
     """
-    if not(index == 1 or index == 4 or index == 7 or index == 15):
-        return ''
     exp = np.floor(np.log10(value))
     base = value/10**exp
-    return '${0:d}e^{{{1:d}}}$'.format(int(base), int(exp))
+    if not(index == 1 or index == 4 or index == 7 or index == 15):
+      return ''
+    if index == 1:
+      return '$n$'
+    return '${0:d}n$'.format(int(base))
+
+def y_ticks_format(value, index):
+    """
+    Converts to labels to scientific notation: n*e^m
+    To have all the number of the same size they are all returned as latex strings
+    """
+    #exp = np.floor(np.log10(value))
+    #base = value/10**exp
+    if index == 0:
+      return ''
+    if index == 1:
+      return '$p$'
+    return '${0:d}p$'.format(index)
 
 plt.rc('text', usetex = True)
 plt.rc('font',**{'family':'serif','serif':['Computer Modern Roman']})
@@ -41,7 +56,8 @@ ax.plot(n_s_points, y_s, '-')
 ax.set_xscale('log')
 ax.set_xlim([n_s_args[0], n_s_args[1]])
 ax.set_xticks(np.arange(*n_s_args))
-ax.xaxis.set_major_formatter(FuncFormatter(ticks_format))
+ax.xaxis.set_major_formatter(FuncFormatter(x_ticks_format))
+ax.yaxis.set_major_formatter(FuncFormatter(y_ticks_format))
 ax.text(1.75e6, 350, 'Horizontal Partitioning Better',
       bbox={'facecolor':'powderblue', 'alpha':0.5, 'pad':10})
 ax.text(8e5, 2700, 'Vertical Partitioning Better',
@@ -52,7 +68,7 @@ ax.text(8e5, 2700, 'Vertical Partitioning Better',
 #plt.yticks(np.arange(*p_s_args))
 
 #plt.legend(loc='lower left', fontsize='15')
-plt.ylabel('Num. Features (p)')
-plt.xlabel('Num. Instances (n), Log Scale')
+plt.ylabel('Num. Features')
+plt.xlabel('Num. Instances, Log Scale')
 plt.grid(True)
 plt.savefig('n-vs-p.eps', box_inches='tight', pad_inches=0)
