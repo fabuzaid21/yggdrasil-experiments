@@ -7,9 +7,9 @@ import glob
 DEBUG = False
 
 DIRS = {
-  'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
-  'mnist-8m': [(4, 7, 'Yggdrasil vs. PLANET: MNIST 8M')],
-  'internet-web-company': [(4, 7, 'Yggdrasil vs. PLANET: Yahoo! Dataset')],
+  'by-feature': [(1, 7, 'Yggdrasil vs. MLlib: Number of Features')],
+  'mnist-8m': [(4, 7, 'Yggdrasil vs. MLlib: MNIST 8M')],
+  'internet-web-company': [(4, 7, 'Yggdrasil vs. MLlib: Yahoo! Dataset')],
 #'friedman-1': [(4, 8, 'Friedman 1 Generator: Train RMSE'),
 #(4, 9, 'Friedman 1 Generator: Test RMSE')],
 #'year-prediction-msd': [(4, 8, 'YearPredictionMSD Train RMSE'),
@@ -20,12 +20,12 @@ MARKERS = {
   'byCol*.tsv': '.',
 }
 LABELS_COLORS = {
-  'tsvs/mnist-8m/byRow2.tsv': ('PLANET', 'b'),
+  'tsvs/mnist-8m/byRow2.tsv': ('MLlib', 'b'),
   'tsvs/mnist-8m/byCol2.tsv': ('Yggdrasil', 'g'),
-  'tsvs/internet-web-company/byRow.tsv': ('PLANET', 'b'),
+  'tsvs/internet-web-company/byRow.tsv': ('MLlib', 'b'),
   'tsvs/internet-web-company/byCol.tsv': ('Yggdrasil', 'g'),
-  'tsvs/by-feature/byRow15.tsv': ('PLANET, D = 15', 'b'),
-  'tsvs/by-feature/byRow5.tsv': ('PLANET, D = 5', 'cyan'),
+  'tsvs/by-feature/byRow15.tsv': ('MLlib, D = 15', 'b'),
+  'tsvs/by-feature/byRow5.tsv': ('MLlib, D = 5', 'cyan'),
   'tsvs/by-feature/byCol15.tsv': ('Yggdrasil, D = 15', 'g'),
   'tsvs/by-feature/byCol5.tsv': ('Yggdrasil, D = 5', 'magenta')
 }
