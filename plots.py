@@ -7,29 +7,28 @@ import glob
 DEBUG = False
 
 DIRS = {
-        #'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
-        'mnist-8m': [(4, 7, 'Yggdrasil vs. PLANET: MNIST 8M')],
-        'internet-web-company': [(4, 7, 'Yggdrasil vs. PLANET: Leading Web Company')],
-        #'friedman-1': [(4, 8, 'Friedman 1 Generator: Train RMSE'),
-                       #(4, 9, 'Friedman 1 Generator: Test RMSE')],
-        #'year-prediction-msd': [(4, 8, 'YearPredictionMSD Train RMSE'),
-                                #(4, 9, 'YearPredictionMSD Test RMSE')],
-        }
-FILE_PATTERNS = {
-                 'byRow*.tsv': 'x',
-                 'byCol*.tsv': '.',
-                }
-
-LABELS = {
-    'tsvs/mnist-8m/byRow.tsv': 'PLANET',
-    'tsvs/mnist-8m/byCol.tsv': 'Yggdrasil',
-    'tsvs/internet-web-company/byRow.tsv': 'PLANET',
-    'tsvs/internet-web-company/byCol.tsv': 'Yggdrasil',
-    'tsvs/by-feature/byRow15.tsv': 'PLANET, D = 15',
-    'tsvs/by-feature/byRow5.tsv': 'PLANET, D = 5',
-    'tsvs/by-feature/byCol15.tsv': 'Yggdrasil, D = 15',
-    'tsvs/by-feature/byCol5.tsv': 'Yggdrasil, D = 5',
-         }
+#'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
+  'mnist-8m': [(4, 7, 'Yggdrasil vs. PLANET: MNIST 8M')],
+  'internet-web-company': [(4, 7, 'Yggdrasil vs. PLANET: Leading Web Company')],
+#'friedman-1': [(4, 8, 'Friedman 1 Generator: Train RMSE'),
+#(4, 9, 'Friedman 1 Generator: Test RMSE')],
+#'year-prediction-msd': [(4, 8, 'YearPredictionMSD Train RMSE'),
+#(4, 9, 'YearPredictionMSD Test RMSE')],
+}
+MARKERS = {
+  'byRow*.tsv': 'x',
+  'byCol*.tsv': '.',
+}
+LABELS_COLORS = {
+  'tsvs/mnist-8m/byRow2.tsv': ('PLANET', 'b'),
+  'tsvs/mnist-8m/byCol2.tsv': ('Yggdrasil', 'g'),
+  'tsvs/internet-web-company/byRow.tsv': ('PLANET', 'b'),
+  'tsvs/internet-web-company/byCol.tsv': ('Yggdrasil', 'g'),
+  'tsvs/by-feature/byRow15.tsv': ('PLANET, D = 15', 'b'),
+  'tsvs/by-feature/byRow5.tsv': ('PLANET, D = 5', 'cyan'),
+  'tsvs/by-feature/byCol15.tsv': ('Yggdrasil, D = 15', 'g'),
+  'tsvs/by-feature/byCol5.tsv': ('Yggdrasil, D = 5', 'magenta')
+}
 
 plt.rc('text', usetex = True)
 plt.rc('font',**{'family':'serif','serif':['Computer Modern Roman']})
@@ -48,7 +47,7 @@ for dir, plot_infos in DIRS.items():
     for (x_val_index, y_val_index, title) in plot_infos:
         if DEBUG: print title
         plt.figure()
-        for glob_pattern, marker in FILE_PATTERNS.items():
+        for glob_pattern, marker in MARKERS.items():
             for full_path in glob.iglob('tsvs/' + dir + '/' + glob_pattern):
                 if DEBUG: print full_path
                 with open(full_path) as f:
@@ -72,9 +71,9 @@ for dir, plot_infos in DIRS.items():
                         # vals[6], float(vals[7]), float(vals[8]), float(vals[9])
                         xs.append(x_val)
                         ys.append(y_val)
-
-                    plt.plot(xs, ys, marker + '-', markersize=10, label = LABELS[full_path] if full_path in LABELS
-                                                        else full_path[len('tsvs/' + dir + '/'):-4])
+                    label, color = LABELS_COLORS[full_path] if full_path in LABELS_COLORS \
+                                                            else (full_path[len('tsvs/' + dir + '/'):-4], None)
+                    plt.plot(xs, ys, marker + '-', markersize=10, label=label, color=color)
                     plt.xlabel(x_label)
                     plt.ylabel(y_label)
         if dir == 'mnist-8m':
