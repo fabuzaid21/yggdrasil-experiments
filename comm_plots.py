@@ -19,12 +19,12 @@ plt.rc('text', usetex = True)
 plt.rc('font',**{'family':'serif','serif':['Computer Modern Roman']})
 plt.rcParams.update({'font.size': 18})
 
-ygg, = plt.plot(x_axis, np.cumsum(by_col_2000), '.-', markersize=10, label='Yggdrasil, p = \{1K, 2K, 4K\}', color='g')
+ygg, = plt.plot(x_axis, np.cumsum(by_col_2000), '.-', markersize=12, label='Yggdrasil, p = \{1K, 2K, 4K\}', color='g')
 
 #plt.plot(x_axis, np.cumsum(by_col_4000), '.-', label='Yggdrasil, p = 4000')
-planet_1k, = plt.plot(x_axis, np.cumsum(by_row_1000), 'x-', markersize=10, label='PLANET, p = 1K', color='b')
-planet_2k, = plt.plot(x_axis, np.cumsum(by_row_2000), 'x-', markersize=10, label='PLANET, p = 2K', color='cyan')
-planet_4k, = plt.plot(x_axis, np.cumsum(by_row_4000), 'x-', markersize=10, label='PLANET, p = 4K', color='red')
+planet_1k, = plt.plot(x_axis, np.cumsum(by_row_1000), 'x-', markersize=12, label='MLlib, p = 1K', color='b')
+planet_2k, = plt.plot(x_axis, np.cumsum(by_row_2000), 'x-', markersize=12, label='MLlib, p = 2K', color='orangered')
+planet_4k, = plt.plot(x_axis, np.cumsum(by_row_4000), 'x-', markersize=12, label='MLlib, p = 4K', color='magenta')
 
 first_legend = plt.legend(handles=[planet_1k, planet_2k, planet_4k], loc='upper left',
                           fontsize='15')

@@ -7,9 +7,9 @@ import glob
 DEBUG = False
 
 DIRS = {
-#'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
-  'mnist-8m': [(4, 7, 'Yggdrasil vs. PLANET: MNIST 8M')],
-  #'internet-web-company': [(4, 7, 'Yggdrasil vs. PLANET: Leading Web Company')],
+  'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
+ 'mnist-8m': [(4, 7, 'Yggdrasil vs. PLANET and XGBoost: MNIST 8M')],
+ 'internet-web-company': [(4, 7, 'Yggdrasil vs. PLANET and XGBoost: Leading Web Company')],
 #'friedman-1': [(4, 8, 'Friedman 1 Generator: Train RMSE'),
 #(4, 9, 'Friedman 1 Generator: Test RMSE')],
 #'year-prediction-msd': [(4, 8, 'YearPredictionMSD Train RMSE'),
@@ -18,16 +18,19 @@ DIRS = {
 MARKERS = {
   'byRow*.tsv': 'x',
   'byCol*.tsv': '.',
+  'xgboost.tsv': '*',
 }
 LABELS_COLORS = {
-  'tsvs/mnist-8m/byRow2.tsv': ('PLANET', 'b'),
+  'tsvs/mnist-8m/byRow.tsv': ('MLlib', 'b'),
   'tsvs/mnist-8m/byCol2.tsv': ('Yggdrasil', 'g'),
-  'tsvs/internet-web-company/byRow.tsv': ('PLANET', 'b'),
-  'tsvs/internet-web-company/byCol.tsv': ('Yggdrasil', 'g'),
-  'tsvs/by-feature/byRow15.tsv': ('PLANET, D = 15', 'b'),
-  'tsvs/by-feature/byRow5.tsv': ('PLANET, D = 5', 'cyan'),
+  'tsvs/mnist-8m/xgboost.tsv': ('XGBoost', 'r'),
+  'tsvs/internet-web-company/byRow.tsv': ('MLlib', 'b'),
+  'tsvs/internet-web-company/byCol2.tsv': ('Yggdrasil', 'g'),
+  'tsvs/internet-web-company/xgboost.tsv': ('XGBoost', 'r'),
+  'tsvs/by-feature/byRow15.tsv': ('MLlib, D = 15', 'b'),
+  'tsvs/by-feature/byRow16.tsv': ('MLlib, D = 13', 'orangered'),
   'tsvs/by-feature/byCol15.tsv': ('Yggdrasil, D = 15', 'g'),
-  'tsvs/by-feature/byCol5.tsv': ('Yggdrasil, D = 5', 'magenta')
+  'tsvs/by-feature/byCol16.tsv': ('Yggdrasil, D = 13', 'goldenrod')
 }
 
 plt.rc('text', usetex = True)
@@ -73,14 +76,17 @@ for dir, plot_infos in DIRS.items():
                         ys.append(y_val)
                     label, color = LABELS_COLORS[full_path] if full_path in LABELS_COLORS \
                                                             else (full_path[len('tsvs/' + dir + '/'):-4], None)
-                    plt.plot(xs, ys, marker + '-', markersize=10, label=label, color=color)
+                    plt.plot(xs, ys, marker + '-', markersize=12, label=label, color=color)
                     plt.xlabel(x_label)
                     plt.ylabel(y_label)
         if dir == 'mnist-8m':
             plt.ylim([0, 2500])
-            plt.xlim([5, 19])
+            plt.xlim([5, 20])
+        elif dir == 'internet-web-company':
+            plt.ylim([0, 10000])
+            plt.xlim([5, 18])
         plt.legend(loc='upper left', fontsize='17')
-        plt.title(title)
+        plt.title(title, y=1.04)
         plt.grid(True)
         filename = re.sub(r'(:|\s+)', '_', title)
         plt.savefig(filename + '.eps')
