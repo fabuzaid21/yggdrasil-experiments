@@ -7,9 +7,9 @@ import glob
 DEBUG = False
 
 DIRS = {
-  'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
- 'mnist-8m': [(4, 7, 'Yggdrasil vs. PLANET and XGBoost: MNIST 8M')],
- 'internet-web-company': [(4, 7, 'Yggdrasil vs. PLANET and XGBoost: Leading Web Company')],
+  #'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
+ #'mnist-8m': [(4, 7, 'Yggdrasil vs. PLANET and XGBoost: MNIST 8M')],
+ 'internet-web-company': [(4, 7, 'Yggdrasil vs. PLANET and XGBoost: Yahoo 2M')],
 #'friedman-1': [(4, 8, 'Friedman 1 Generator: Train RMSE'),
 #(4, 9, 'Friedman 1 Generator: Test RMSE')],
 #'year-prediction-msd': [(4, 8, 'YearPredictionMSD Train RMSE'),
