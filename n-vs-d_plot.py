@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 
-import matplotlib.pyplot as plt
-import config
+from utils import save_figure
 from matplotlib.ticker import FuncFormatter
-import numpy as np
 from math import log
 from scipy.special import lambertw
+import matplotlib.pyplot as plt
+import config
+import numpy as np
 
 """
 Converts to labels to scientific notation: n*e^m
@@ -57,9 +58,8 @@ if __name__ == '__main__':
     ax.text(8e5, 9, 'Yggdrasil Better',
           bbox={'facecolor':'orange', 'alpha':0.5, 'pad':10})
 
-    plt.title('Num. Instances vs. Max Tree Depth', y=1.04)
     plt.ylabel('Tree Depth')
     plt.xlabel('Num. Instances, Log Scale')
     plt.grid(True)
-    plt.savefig('n-vs-d.svg', transparent=True, pad_inches=2.5)
+    save_figure('n-vs-d', 'Num. Instances vs. Max Tree Depth')
 

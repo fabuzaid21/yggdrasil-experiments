@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from utils import save_figure, add_legend
 import matplotlib.pyplot as plt
 import config
 import re
@@ -71,8 +72,7 @@ if __name__ == '__main__':
             elif dir == 'yahoo':
                 plt.ylim([0, 10000])
                 plt.xlim([5, 18])
-            plt.legend(loc='upper left', fancybox=True, framealpha=0.4)
-            plt.title(title, y=1.04)
+            add_legend('upper left')
             plt.grid(True)
-            plt.savefig(dir + '.svg', transparent=True, pad_inches=2.5)
+            save_figure(dir, title)
 

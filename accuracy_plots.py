@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from utils import save_figure, add_legend
 import matplotlib.pyplot as plt
 import numpy as np
 import config
@@ -28,9 +29,9 @@ if __name__ == '__main__':
     plt.plot(p_s, [0.968106, 0.945766, 0.917531, 0.882080, 0.861226],
              'x-', label='PLANET, B = 8')
 
-    plt.legend(loc='lower left', fontsize='15', fancybox=True, framealpha=0.4)
+    add_legend('lower left')
     plt.ylabel('Training Accuracy')
     plt.xlabel('Num. Features')
-    plt.title('Yggdrasil vs. PLANET: Discretization Error')
     plt.grid(True)
-    plt.savefig('accuracy.svg', transparent=True, pad_inches=2.5)
+    save_figure('accuracy', 'Yggdrasil vs. PLANET: Discretization Error')
+

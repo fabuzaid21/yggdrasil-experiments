@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from utils import save_figure
 import matplotlib.pyplot as plt
 import config
 import numpy as np
@@ -29,16 +30,13 @@ if __name__ == '__main__':
                           label='MLlib, p = 4K', color='magenta')
 
     first_legend = plt.legend(handles=[planet_1k, planet_2k, planet_4k],
-                              loc='upper left', fontsize='15',
-                              fancybox=True, framealpha=0.4)
+                              loc='upper left', fancybox=True, framealpha=0.4)
     ax = plt.gca().add_artist(first_legend)
-    plt.legend(handles=[ygg], loc='lower right', fontsize='15',
-               fancybox=True, framealpha=0.4)
+    plt.legend(handles=[ygg], loc='lower right', fancybox=True, framealpha=0.4)
 
     plt.ylabel('Number of Bytes Sent, Log Scale')
     plt.xlabel('Tree Depth')
-    plt.title('Yggdrasil vs. PLANET: Communication Cost', y=1.04)
     plt.yscale('log')
     plt.grid(True)
-    plt.savefig('communication.svg', transparent=True, pad_inches=2.5)
+    save_figure('communication', 'Yggdrasil vs. PLANET: Communication Cost')
 

@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
+from utils import save_figure
+from matplotlib.ticker import FuncFormatter
+from math import pow
 import matplotlib.pyplot as plt
 import config
-from matplotlib.ticker import FuncFormatter
 import numpy as np
-from math import pow
 
 """
 Converts to labels to scientific notation: n*e^m
@@ -57,9 +58,8 @@ if __name__ == '__main__':
     ax.text(8e5, 2700, 'Yggdrasil Better',
           bbox={'facecolor':'orange', 'alpha':0.5, 'pad':10})
 
-    plt.title('Num. Instances vs. Num. Features', y=1.04)
     plt.ylabel('Num. Features')
     plt.xlabel('Num. Instances, Log Scale')
     plt.grid(True)
-    plt.savefig('n-vs-p.svg', transparent=True, pad_inches=2.5)
+    save_figure('n-vs-p', 'Num. Instances vs. Num. Features')
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from utils import save_figure
 import matplotlib.pyplot as plt
 import numpy as np
 import config
@@ -33,11 +34,15 @@ if __name__ == '__main__':
                    color='darkviolet')
     autolabel(bars)
 
+    plt.title('Yggdrasil: Impact of Individual Optimizations', y=1.04)
     plt.ylabel('Training Time (s)')
     plt.ylim([0, 150])
-    plt.title('Yggdrasil: Impact of Individual Optimizations', y=1.04)
+    plt.xlim([0, 11])
     plt.xticks(index + bar_width, xticks)
     plt.tight_layout()
+    print 'individual_optimizations.svg'
     plt.savefig('individual_optimizations.svg', transparent=True,
                 pad_inches=2.5)
+    #print 'individual_optimizations.eps'
+    #plt.savefig('individual_optimizations.eps')
 
