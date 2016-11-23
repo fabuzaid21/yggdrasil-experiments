@@ -22,7 +22,7 @@ if __name__ == '__main__':
     x_axis = range(1, 11)
 
     ygg, = plt.plot(x_axis, np.cumsum(by_col_2000), '.-',
-                    label='Yggdrasil, p = {1K, 2K, 4K}', color='g')
+                    label='Yggdrasil, p = \{1K, 2K, 4K\}', color='g')
     planet_1k, = plt.plot(x_axis, np.cumsum(by_row_1000), 'x-',
                           label='MLlib, p = 1K', color='b')
     planet_2k, = plt.plot(x_axis, np.cumsum(by_row_2000), 'x-',
@@ -31,9 +31,9 @@ if __name__ == '__main__':
                           label='MLlib, p = 4K', color='magenta')
 
     first_legend = plt.legend(handles=[planet_1k, planet_2k, planet_4k],
-                              loc='upper left', fancybox=True, framealpha=0.4)
+                              loc='upper left')
     ax = plt.gca().add_artist(first_legend)
-    plt.legend(handles=[ygg], loc='lower right', fancybox=True, framealpha=0.4)
+    plt.legend(handles=[ygg], loc='lower right')
 
     plt.ylabel('Number of Bytes Sent, Log Scale')
     plt.xlabel('Tree Depth')

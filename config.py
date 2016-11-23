@@ -1,8 +1,8 @@
 
 import matplotlib.pyplot as plt
 
-#plt.rc('text', usetex=True)
-plt.rcParams['font.family'] = 'sans-serif'
+plt.rc('text', usetex=True)
+plt.rcParams['font.family'] = 'serif'
 plt.rcParams['font.serif'] = 'Computer Modern Roman'
 plt.rcParams['font.sans-serif'] = 'Raleway'
 plt.rcParams['font.weight'] = 'medium'

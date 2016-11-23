@@ -55,9 +55,9 @@ if __name__ == '__main__':
     ax.set_xticks(np.arange(*n_s_args))
     ax.xaxis.set_major_formatter(FuncFormatter(x_ticks_format))
     ax.yaxis.set_major_formatter(FuncFormatter(y_ticks_format))
-    ax.text(2.5e6, 350, 'PLANET Better',
+    ax.text(1.75e6, 350, 'Horizontal Partitioning Better',
           bbox={'facecolor':'powderblue', 'alpha':0.5, 'pad':10})
-    ax.text(8e5, 2700, 'Yggdrasil Better',
+    ax.text(8e5, 2700, 'Vertical Partitioning Better',
           bbox={'facecolor':'orange', 'alpha':0.5, 'pad':10})
 
     plt.ylabel('Num. Features')

@@ -1,7 +1,7 @@
 
 import matplotlib.pyplot as plt
 
-PAPER=False
+PAPER=True
 
 def save_figure(filename, title):
     plt.title(title, y=1.04)
