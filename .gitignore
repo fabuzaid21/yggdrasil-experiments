@@ -1,4 +1,7 @@
 *.swp
+*.svg
+*.jar
+*.pyc
 *.sh
 *.pem
 *.eps
