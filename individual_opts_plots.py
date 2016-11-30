@@ -30,18 +30,23 @@ if __name__ == '__main__':
     plt.rcParams.update({'xtick.labelsize': 15})
     plt.rcParams.update({'figure.figsize': (10, 6)})
 
-    bars = plt.bar(index + bar_width / 2, times, bar_width,
+
+    _, ax = plt.subplots()
+    ax.set_title('Yggdrasil: Impact of Individual Optimizations', y=1.04)
+    ax.set_ylabel('Training Time (s)')
+    ax.set_ylim([0, 150])
+    ax.set_xlim([0, 11])
+    ax.set_axisbelow(True)
+
+    bars = ax.bar(index + bar_width / 2, times, bar_width,
                    color='darkviolet')
     autolabel(bars)
-
-    plt.title('Yggdrasil: Impact of Individual Optimizations', y=1.04)
-    plt.ylabel('Training Time (s)')
-    plt.ylim([0, 150])
-    plt.xlim([0, 11])
     plt.xticks(index + bar_width, xticks)
     plt.tight_layout()
-    print 'individual_optimizations.svg'
-    plt.savefig('individual_optimizations.svg', transparent=True,
+
+    print 'individual_optimizations.pdf'
+    plt.grid(b=True, axis='y')
+    plt.savefig('individual_optimizations.pdf', transparent=True,
                 pad_inches=2.5)
     #print 'individual_optimizations.eps'
     #plt.savefig('individual_optimizations.eps')
