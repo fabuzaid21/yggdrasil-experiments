@@ -50,8 +50,8 @@ if __name__ == '__main__':
     plt.xticks(x_indices[:N] + BAR_WIDTH, xticks[:N])
     plt.tight_layout()
 
-    print 'individual_optimizations_%d.pdf' % N
+    print 'individual_optimizations_%d.svg' % N
     plt.grid(b=True, axis='y')
-    plt.savefig('individual_optimizations_%d.pdf' % N, transparent=True,
+    plt.savefig('individual_optimizations_%d.svg' % N, transparent=True,
                 pad_inches=0.15)
 
