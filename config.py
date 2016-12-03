@@ -9,10 +9,11 @@ plt.rcParams['font.weight'] = 'medium'
 plt.rcParams['axes.titleweight'] = 'medium'
 plt.rcParams['axes.labelweight'] = 'medium'
 
-plt.rcParams['font.size'] = 18
-plt.rcParams['axes.labelsize'] = 16
-plt.rcParams['xtick.labelsize'] = 15
-plt.rcParams['ytick.labelsize'] = 15
-plt.rcParams['legend.fontsize'] = 14
+plt.rcParams['font.size'] = 22
+plt.rcParams['axes.labelsize'] = 20
+plt.rcParams['xtick.labelsize'] = 17
+plt.rcParams['ytick.labelsize'] = 17
+plt.rcParams['legend.fontsize'] = 16
 plt.rcParams['lines.markersize'] = 12
+plt.rcParams['lines.linewidth'] = 1.75
 
