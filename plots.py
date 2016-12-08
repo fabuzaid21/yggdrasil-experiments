@@ -4,11 +4,13 @@ from utils import save_figure, add_legend
 import matplotlib.pyplot as plt
 import config
 import re
+import sys
 import glob
 
 DEBUG = False
 
 DIRS = {
+ 'by-feature2': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
  'by-feature': [(1, 7, 'Yggdrasil vs. PLANET: Number of Features')],
  'mnist-8m': [(4, 7, 'Yggdrasil vs. MLlib and XGBoost: MNIST 8M')],
  'yahoo': [(4, 7, 'Yggdrasil vs. MLlib and XGBoost: Yahoo 2M')],
@@ -31,13 +33,16 @@ LABELS_COLORS = {
   'tsvs/yahoo/byRow.tsv': ('MLlib', 'b'),
   'tsvs/yahoo/byCol2.tsv': ('Yggdrasil', 'g'),
   'tsvs/yahoo/xgboost.tsv': ('XGBoost', 'r'),
-  'tsvs/by-feature/byRow15.tsv': ('MLlib, D = 15', 'b'),
-  'tsvs/by-feature/byRow16.tsv': ('MLlib, D = 13', 'orangered'),
-  'tsvs/by-feature/byCol15.tsv': ('Yggdrasil, D = 15', 'g'),
-  'tsvs/by-feature/byCol16.tsv': ('Yggdrasil, D = 13', 'goldenrod')
+  'tsvs/by-feature2/byRow13.tsv': ('MLlib, D = 13', 'purple'),
+  'tsvs/by-feature2/byCol13.tsv': ('Yggdrasil, D = 13', 'purple'),
+  'tsvs/by-feature/byRow13.tsv': ('MLlib, D = 13', 'purple'),
+  'tsvs/by-feature/byCol13.tsv': ('Yggdrasil, D = 13', 'purple'),
+  'tsvs/by-feature/byRow15.tsv': ('MLlib, D = 15', 'orangered'),
+  'tsvs/by-feature/byCol15.tsv': ('Yggdrasil, D = 15', 'orangered'),
 }
 
 if __name__ == '__main__':
+    SPEEDUP = sys.argv[-1] == '--speedup'
     for dir, plot_infos in DIRS.items():
         if DEBUG: print dir
         for (x_val_index, y_val_index, title) in plot_infos:
@@ -69,10 +74,38 @@ if __name__ == '__main__':
             if dir == 'mnist-8m':
                 plt.ylim([0, 2500])
                 plt.xlim([5, 20])
+                if SPEEDUP:
+                  ax = plt.gca()
+                  ax.annotate('6x speedup', xy=(17.8, 1459), xytext=(16.8, 1459),
+                              xycoords='data', ha='right', va='center',
+                              bbox=dict(boxstyle='round', facecolor='white', edgecolor='black', alpha=0.7),
+                              arrowprops=dict(arrowstyle='-[, widthB=5.7, lengthB=1.2',
+                                              lw=2.2))
             elif dir == 'yahoo':
                 plt.ylim([0, 10000])
                 plt.xlim([5, 18])
-            add_legend('upper left')
+                if SPEEDUP:
+                  ax = plt.gca()
+                  ax.annotate('24x speedup', xy=(16.9, 5216), xytext=(15.9, 5216),
+                              xycoords='data', ha='right', va='center',
+                              bbox=dict(boxstyle='round', facecolor='white', edgecolor='black', alpha=0.7),
+                              arrowprops=dict(arrowstyle='-[, widthB=6.5, lengthB=1.2',
+                                              lw=2.2))
+            elif dir.startswith('by-feature'):
+                plt.ylim([0, 1800])
+            if dir == 'by-feature':
+                ax = plt.subplot(1,1,1)
+                handles, labels = ax.get_legend_handles_labels()
+                LABEL_ORDER = ['MLlib, D = 13', 'Yggdrasil, D = 13', 'MLlib, D = 15', 'Yggdrasil, D = 15']
+                hl = sorted(zip(labels, handles), key=lambda x:  LABEL_ORDER.index(x[0]))
+                labels2, handles2 = zip(*hl)
+                ax.legend(handles2, labels2, loc='upper left', fancybox=True, framealpha=0.5)
+            else:
+                add_legend('upper left')
             plt.grid(True)
-            save_figure(dir, title)
+
+            if SPEEDUP:
+              save_figure(dir + '-speedup', title)
+            else:
+              save_figure(dir, title)
 
