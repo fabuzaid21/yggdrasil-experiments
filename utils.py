@@ -11,7 +11,7 @@ def save_figure(filename, title):
     else:
         print filename + '.pdf'
         plt.tight_layout()
-        plt.savefig(filename + '.pdf', transparent=True, pad_inches=0.1)
+        plt.savefig(filename + '.pdf', transparent=True, pad_inches=0.15)
 
 def add_legend(loc):
     if PAPER:

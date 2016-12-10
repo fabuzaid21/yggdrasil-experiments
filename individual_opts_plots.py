@@ -18,7 +18,7 @@ def autolabel(rects):
 # - sort in place + sparse bitvectors + compressed labels 
 # - sparse bitvectors + compressed labels + RLE + node indices 
 xticks = (
-    'uncompressed\ntraining',
+    'uncompressed\ntraining\n ',
     'uncompressed +\nsparse bitvectors',
     'uncompressed +\nsparse bitvectors +\nlabel encoding',
     'RLE +\nsparse bitvectors +\nlabel encoding'
@@ -53,5 +53,5 @@ if __name__ == '__main__':
     print 'individual_optimizations_%d.pdf' % N
     plt.grid(b=True, axis='y')
     plt.savefig('individual_optimizations_%d.pdf' % N, transparent=True,
-                pad_inches=0.05)
+                pad_inches=0.15)
 
