@@ -18,6 +18,7 @@ by_row_4000 = [197.5e6, 391.1e6, 776.2e6, 1546.3e6, 3e9, 5.9e9, 10.7e9,
                15.7e9, 10.6e9 + 9.7e9, 6.6e9 + 6.5e9 + 5.0e9 + 6.9e9 + 683.9e6]
 
 if __name__ == '__main__':
+    plt.rcParams.update({'figure.figsize': (8, 7)})
     x_axis = range(1, 11)
 
     ygg, = plt.plot(x_axis, np.cumsum(by_col_2000), '.-',

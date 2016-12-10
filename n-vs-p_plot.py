@@ -41,6 +41,8 @@ B = 32.0
 k = 16.0
 
 if __name__ == '__main__':
+    plt.rcParams.update({'figure.figsize': (8, 7)})
+
     p = lambda n: 1e3*(D / (pow(2, D) *B))*(n/32.0) + (1/4*B)
 
     n_s_points = np.linspace(*n_s_args)
