@@ -3,6 +3,7 @@
 from utils import save_figure
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 import config
 
 # attach wall-clock time at top of bar
@@ -23,16 +24,18 @@ xticks = (
     'RLE +\nsparse bitvectors +\nlabel encoding'
 )
 times = [134.467, 125.764, 101.054, 81.51]
+COLORS = ['orangered', '#814b91', '#814b91', '#814b91']
 Y_MAX = 150
 BAR_WIDTH = 0.29
 x_indices = np.arange(0, len(times))
 bar_indices = x_indices + BAR_WIDTH / 2
 X_MAX = bar_indices[-1] + 3*BAR_WIDTH / 2
 
+N = int(sys.argv[-1]) if len(sys.argv[1:]) == 1 else 4
+
 if __name__ == '__main__':
     plt.rcParams.update({'xtick.labelsize': 13})
     plt.rcParams.update({'figure.figsize': (8, 6.5)})
-
 
     _, ax = plt.subplots()
     ax.set_title('Yggdrasil: Impact of Individual Optimizations', y=1.04)
@@ -41,15 +44,14 @@ if __name__ == '__main__':
     ax.set_xlim([0, X_MAX])
     ax.set_axisbelow(True)
 
-    bars = ax.bar(bar_indices, times, BAR_WIDTH, color='#814b91')
+
+    bars = ax.bar(bar_indices[:N], times[:N], BAR_WIDTH, color=COLORS)
     autolabel(bars)
-    plt.xticks(x_indices + BAR_WIDTH, xticks)
+    plt.xticks(x_indices[:N] + BAR_WIDTH, xticks[:N])
     plt.tight_layout()
 
-    print 'individual_optimizations.pdf'
+    print 'individual_optimizations_%d.pdf' % N
     plt.grid(b=True, axis='y')
-    plt.savefig('individual_optimizations.pdf', transparent=True,
+    plt.savefig('individual_optimizations_%d.pdf' % N, transparent=True,
                 pad_inches=0.05)
-    #print 'individual_optimizations.eps'
-    #plt.savefig('individual_optimizations.eps')
 
